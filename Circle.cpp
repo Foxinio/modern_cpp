@@ -1,34 +1,34 @@
 #include "Circle.hpp"
+
+#define _USE_MATH_DEFINES
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r)
-    : r_(r)
-{}
+Circle::Circle(double r) :
+	Shape(Color::Red), r_(r) { }
 
-Circle::Circle(const Circle & other)
+double Circle::getArea() const noexcept
 {
-    r_ = other.getRadius();
+	return M_PI * r_ * r_;
 }
 
-double Circle::getArea() const
+double Circle::getPerimeter() const noexcept
 {
-    return M_PI * r_ * r_;
-}
-
-double Circle::getPerimeter() const
-{
-    return 2 * M_PI * r_;
+	return 2 * M_PI * r_;
 }
 
 double Circle::getRadius() const
 {
-    return r_;
+	return r_;
 }
 
 void Circle::print() const
 {
-    std::cout << "Circle: radius: " << getRadius() << std::endl
-              << "          area: " << getArea() << std::endl
-              << "     perimeter: " << getPerimeter() << std::endl;
+	std::cout << "Circle: radius: " << getRadius() << std::endl
+		<< "          area: " << getArea() << std::endl
+		<< "     perimeter: " << getPerimeter() << std::endl;
+}
+
+double Circle::getPi() {
+	return getPerimeter() / (2 * r_);
 }

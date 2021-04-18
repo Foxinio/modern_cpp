@@ -5,18 +5,21 @@
 class Rectangle : public Shape
 {
 public:
-    Rectangle(double x, double y);
-    Rectangle(const Rectangle & other);
+	using Shape::Shape;
 
-    double getArea() const;
-    double getPerimeter() const;
-    double getX() const;
-    double getY() const;
-    void print() const;
+	Rectangle(double x, double y);
+	Rectangle(const Rectangle& other) = default;
+	Rectangle& operator=(const Rectangle& other) = default;
+
+	virtual double getArea() const override;
+	virtual double getPerimeter() const noexcept override;
+	virtual double getX() const final;
+	double getY() const;
+	virtual void print() const override;
 
 private:
-    Rectangle();
+	Rectangle();
 
-    double x_;
-    double y_;
+	double x_ = 1;
+	double y_ = 1;
 };
